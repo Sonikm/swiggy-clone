@@ -1,8 +1,9 @@
+import PageNav from "./components/PageNav";
 
 function App() {
   return (
-    <div className="App">
-        hello
+    <div className="">
+        <PageNav/>
     </div>
   );
 }
