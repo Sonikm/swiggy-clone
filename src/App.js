@@ -1,16 +1,20 @@
-import PageNav from "./components/PageNav";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="">
-        <PageNav/>
+    <div className="app text-medium">
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }
 
 export default App;
 
-  /** 
+/** 
    Header
       - Logo
       - Location
