@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+  }
+}
+
+@font-face {
+  font-family: myBoldFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Bold.ttf);
+}
+
+@font-face {
+  font-family: myMediumFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Medium.ttf);
+}
+
+@font-face {
+  font-family: myLightFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Light.ttf);
+}
+
+.text-bold {
+  font-family: myBoldFont;
+}
+
+.text-medium {
+  font-family: myMediumFont;
+}
+.text-light {
+  font-family: myLightFont;
+}
+
+.nav-shadow {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+
+.nav-shadow ul li:hover .nav-icon {
+  fill: red;
+}

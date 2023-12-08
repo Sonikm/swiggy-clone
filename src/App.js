@@ -1,8 +1,13 @@
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-        hello
+    <div className="app text-medium">
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }
@@ -11,7 +16,7 @@ function App() {
 
 export default App;
 
-  /** 
+/** 
    Header
       - Logo
       - Location
