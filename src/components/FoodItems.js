@@ -25,7 +25,7 @@ function FoodItems() {
         {foodItems?.map((item) => (
           <img className="w-[140px]"
             src={`${DATA_IMG_URL + item?.imageId}`}
-            id={item?.id}
+            key={item?.id}
             alt=""
           />
         ))}

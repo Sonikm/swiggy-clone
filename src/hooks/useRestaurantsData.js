@@ -15,8 +15,8 @@ function useRestaurantsData() {
       setRestaurants(data?.data);
       setBestOffers(data?.data?.cards[0]?.card?.card?.imageGridCards?.info);
       setFoodItems(data?.data?.cards[1]?.card?.card?.imageGridCards?.info);
-      setTopRestaurants(data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      setRestaurantsList(data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setTopRestaurants(data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setRestaurantsList(data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     getData();
    
