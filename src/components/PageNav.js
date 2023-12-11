@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 export default function PageNav() {
   return (
-    <div className="flex max-w-7xl flex-1 items-center justify-between gap-28 p-4 px-8  ">
+    <div className="flex max-w-7xl flex-1 items-center justify-between gap-28 p-4 px-8 bg-white ">
       <div className="flex items-center justify-between gap-10 ">
         <Link to="/">
           <img
