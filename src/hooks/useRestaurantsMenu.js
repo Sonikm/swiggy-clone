@@ -1,11 +1,21 @@
-import { DATA_MENU_URL } from "../constants/data";
-import fetchData from "../utilities/getData";
+import { useEffect, useState } from "react";
+import getData from "../utilities/getData";
 
-async function useRestaurantsMenu() {
-  const data = await fetchData(DATA_MENU_URL);
-  console.log(data);
+function useRestaurantsMenu(resId) {
+  const [resMenuData, setResMenuData] = useState(null);
 
-  return {data};
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getData(
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6139391&lng=77.2090212&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`,
+      );
+      setResMenuData(data?.data?.cards);
+    }
+
+    fetchData();
+  }, [resId]);
+
+  return { resMenuData };
 }
 
 export default useRestaurantsMenu;

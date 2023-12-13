@@ -1,5 +1,5 @@
 
-async function fetchData(url){
+async function getData(url){
     try {
         const res = await fetch(url);
         const data = await res.json();
@@ -9,4 +9,4 @@ async function fetchData(url){
       }
 }
 
-export default fetchData;
+export default getData;
