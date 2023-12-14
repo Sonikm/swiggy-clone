@@ -1,5 +1,5 @@
 import Banner from "./Banner"
-import FoodItems from "./FoodItems"
+import FoodItems from "./FoodCategories"
 import RestaurantsList from "./RestaurantsList"
 import TopRestaurants from "./TopRestaurants"
 

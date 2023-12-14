@@ -9,6 +9,7 @@ import SignIn from "./components/SignIn";
 import Cart from "./components/Cart";
 import ErrorPage from "./components/ErrorPage";
 import TopRestaurants from "./components/TopRestaurants";
+import FoodCategory from "./components/FoodCategoryItems";
 
 function AppLayout() {
   return (
@@ -35,8 +36,17 @@ const AppRouter = createBrowserRouter([
         element: <RestaurantsMenu />,
       },
       {
+        // /category/83644/menu/24207
+        path: "/category/:collectionId/:resId",
+        element: <RestaurantsMenu />,
+      },
+      {
         path: "/menu/:resId",
         element: <TopRestaurants />,
+      },
+      {
+        path: "/category/:collectionId",
+        element: <FoodCategory />,
       },
       {
         path: "/search",
