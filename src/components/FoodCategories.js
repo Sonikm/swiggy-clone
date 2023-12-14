@@ -3,6 +3,7 @@ import { DATA_IMG_URL } from "../constants/data";
 import leftArrow from "../assets/asset 53.svg";
 import rightArrow from "../assets/asset 54.svg";
 import { Link } from "react-router-dom";
+import { HorizontalRollar } from "./HorizontalRollar";
 
 function FoodItems() {
   const { foodItems } = useRestaurantsData();
@@ -33,7 +34,7 @@ function getCollectionIdFromUrl(url) {
           </span>
         </div>
       </div>
-      <div className="no-scrollbar flex gap-4 overflow-x-scroll">
+      <div className="no-scrollbar flex gap-4 overflow-x-scroll mb-10">
         {foodItems?.map((item) => (
           <Link
             key={item?.id}
@@ -44,6 +45,7 @@ function getCollectionIdFromUrl(url) {
           </Link>
         ))}
       </div>
+      <HorizontalRollar />
     </div>
   );
 }

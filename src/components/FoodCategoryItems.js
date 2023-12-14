@@ -3,6 +3,7 @@ import useFoodCategory from "../hooks/useFoodCategory";
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantsCard";
 import { Link } from "react-router-dom";
+import FilterRes from "./FilterRes";
 
 function FoodCategory() {
   const [foodCategoryList, setFoodCategoryList] = useState([]);
@@ -26,6 +27,9 @@ function FoodCategory() {
       <div className="mt-16 flex max-w-[1100px] flex-col gap-3 justify-start">
         <h2 className="text-4xl font-bold">{title}</h2>
         <p className="text-lg font-extralight text-gray-500 ">{description}</p>
+        
+        <FilterRes />
+
         <h3 className="text-2xl font-bold">{text}</h3>
 
         <div className="flex flex-wrap justify-between items-center mt-6">
