@@ -5,7 +5,7 @@ import useSearchAutoSuggestCuisines from "../hooks/useSearchAutoSuggestCuisines"
 import { ReactComponent as ClearIcon } from "../assets/clear_icon.svg";
 import { AutoSearchCuisinesList } from "./AutoSearchCuisinesList";
 import RecentSearches from "./RecentSearches";
-import PopularCuisines from "./PopularCuisines";
+import PopularCuisinesList from "./PopularCuisinesList";
 
 function Search() {
   const [searchText, setSearchText] = useState(null);
@@ -42,7 +42,7 @@ function Search() {
       ) : (
         <>
           <RecentSearches />
-          <PopularCuisines popularCuisines={popularCuisines} />
+          <PopularCuisinesList popularCuisinesList={popularCuisines} setSearchText={setSearchText} />
         </>
       )}
      

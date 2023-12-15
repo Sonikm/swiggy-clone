@@ -1,7 +1,7 @@
 import { DATA_IMG_URL } from "../constants/data";
 
 export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
-  console.log(autoSuggestCuisines);
+
   return (
     <div className="flex flex-col gap-2">
       {autoSuggestCuisines?.map((cuisine, index) => (
