@@ -1,12 +1,15 @@
+async function getData(url) {
+  try {
+    const response = await fetch(url);
 
-async function fetchData(url){
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }
 
-export default fetchData;
+export default getData;

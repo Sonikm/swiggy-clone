@@ -25,7 +25,7 @@ function Banner() {
         {bestOffers?.map((banner) => (
           <img className="w-[420px]"
             src={`${DATA_IMG_URL + banner?.imageId}`}
-            id={banner?.id}
+            key={banner?.id}
             alt=""
           />
         ))}
