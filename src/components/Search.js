@@ -38,10 +38,10 @@ function Search() {
 
         <div className="mb-10 z-0 mt-28 overflow-y-scroll no-scrollbar  flex w-[70%] flex-col gap-6  px-4">
         {searchText ? (
-        <AutoSearchCuisinesList autoSuggestCuisines={autoSuggestCuisines} />
+        <AutoSearchCuisinesList autoSuggestCuisines={autoSuggestCuisines} setSearchText={setSearchText} />
       ) : (
         <>
-          <RecentSearches />
+          <RecentSearches setSearchText={setSearchText} />
           <PopularCuisinesList popularCuisinesList={popularCuisines} setSearchText={setSearchText} />
         </>
       )}

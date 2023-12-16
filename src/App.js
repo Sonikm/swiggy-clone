@@ -16,7 +16,7 @@ function AppLayout() {
     <div className="app text-medium">
       <Header />
       <Outlet/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,21 +1,46 @@
+import { useSearchParams } from "react-router-dom";
 import { DATA_IMG_URL } from "../constants/data";
+import { useState } from "react";
+import SearchSelectedTab from "./SearchSelectedTab";
+export function AutoSearchCuisinesList({ autoSuggestCuisines, setSearchText }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isSearchDetails, setIsSearchDetails] = useState(false);
 
-export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
+  function handleSearchCuisines(cuisine) {
+    // const query = searchParams.get("query");
+    setSearchParams({ query: cuisine });
+    setIsSearchDetails(true);
+    setSearchText(cuisine);
+    console.log(isSearchDetails);
+  }
 
   return (
-    <div className="flex flex-col gap-2">
-      {autoSuggestCuisines?.map((cuisine, index) => (
-        <AutoSearchCuisine cuisine={cuisine} key={index} />
-      ))}
-    </div>
+    <>
+      {isSearchDetails ? (
+        <SearchSelectedTab />
+      ) : (
+        <div className="flex flex-col gap-2">
+          {autoSuggestCuisines?.map((cuisine, index) => (
+            <AutoSearchCuisine
+              cuisine={cuisine}
+              key={index}
+              onChange={() => handleSearchCuisines(cuisine.text)}
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
- function AutoSearchCuisine({ cuisine }) {
+function AutoSearchCuisine({ cuisine, onChange }) {
   const { text, tagToDisplay, cloudinaryId } = cuisine;
 
   return (
-    <div className="flex cursor-pointer flex-row items-center justify-start gap-4 px-2 py-3 hover:bg-slate-100">
+    <div
+      onClick={onChange}
+      className="flex cursor-pointer flex-row items-center justify-start gap-4 px-2 py-3 hover:bg-slate-100"
+    >
       <img
         className="h-[70px] w-[70px] rounded-lg"
         src={DATA_IMG_URL + cloudinaryId}
@@ -28,6 +53,3 @@ export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
     </div>
   );
 }
-
-
-
