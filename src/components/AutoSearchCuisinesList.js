@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { DATA_IMG_URL } from "../constants/data";
 import { useState } from "react";
 import SearchSelectedTab from "./SearchSelectedTab";
-export function AutoSearchCuisinesList({ autoSuggestCuisines, setSearchText }) {
+export function AutoSearchCuisinesList({ autoSuggestCuisines, setSearchText, searchText }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSearchDetails, setIsSearchDetails] = useState(false);
 
@@ -17,7 +17,7 @@ export function AutoSearchCuisinesList({ autoSuggestCuisines, setSearchText }) {
   return (
     <>
       {isSearchDetails ? (
-        <SearchSelectedTab />
+        <SearchSelectedTab searchText={searchText} />
       ) : (
         <div className="flex flex-col gap-2">
           {autoSuggestCuisines?.map((cuisine, index) => (

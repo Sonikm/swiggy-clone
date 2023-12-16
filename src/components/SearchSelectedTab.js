@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SearchSelectedTabRestaurants } from "./SearchSelectedTabRestaurants";
 import { SearchSelectedTabDish } from "./SearchSelectedTabDish";
 
-function SearchCuisineRestaurants() {
+function SearchSelectedTab({searchText}) {
   const [selectedTab, setSelectedTab] = useState("restaurant");
 
   return (
@@ -32,13 +32,13 @@ function SearchCuisineRestaurants() {
 
       <div className="bg-gray-100  p-5">
         {selectedTab === "restaurant" ? (
-          <SearchSelectedTabRestaurants />
+          <SearchSelectedTabRestaurants searchText={searchText} />
         ) : (
-          <SearchSelectedTabDish />
+          <SearchSelectedTabDish searchText={searchText} />
         )}
       </div>
     </div>
   );
 }
 
-export default SearchCuisineRestaurants;
+export default SearchSelectedTab;
