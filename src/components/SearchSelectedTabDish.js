@@ -26,7 +26,7 @@ function DishCard({ dish }) {
   const { name, description, imageId, price } = dish;
 
   return (
-    <div className="flex w-full items-center cursor-pointer justify-between gap-6 rounded-lg bg-white p-4 ">
+    <div className="flex w-full items-center justify-between gap-6 rounded-lg bg-white p-4 ">
       <div className="flex flex-col text-sm ">
         <div className="flex ">
           <img
@@ -49,7 +49,7 @@ function DishCard({ dish }) {
           src={ imageId ? DATA_IMG_URL + imageId : icon}
           alt=""
         />
-        <span className=" -mt-6  rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg">
+        <span className=" -mt-6  cursor-pointer  rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg">
           ADD
         </span>
       </div>

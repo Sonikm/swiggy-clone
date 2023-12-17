@@ -8,15 +8,14 @@ import Offers from "./components/Offers";
 import SignIn from "./components/SignIn";
 import Cart from "./components/Cart";
 import ErrorPage from "./components/ErrorPage";
-import TopRestaurants from "./components/TopRestaurants";
-import FoodCategory from "./components/FoodCategoryItems";
+import FoodCollectionItem from "./components/FoodCollectionItems";
 
 function AppLayout() {
   return (
     <div className="app text-medium">
       <Header />
       <Outlet/>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
@@ -32,20 +31,24 @@ const AppRouter = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "/menu/:resId",
+        path: "/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
       },
       {
-        path: "/category/:collectionId/:resId",
+        path: "/search/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
       },
       {
-        path: "/menu/:resId",
-        element: <TopRestaurants />,
+        path: "topRestaurants/:cuisine/:resId",
+        element: <RestaurantsMenu />,
       },
       {
-        path: "/category/:collectionId",
-        element: <FoodCategory />,
+        path: "/collections/:cuisine/:collectionId",
+        element: <FoodCollectionItem />,
+      },
+      {
+        path: "/collections/restaurants/:cuisine/:resId",
+        element: <RestaurantsMenu />,
       },
       {
         path: "/search",

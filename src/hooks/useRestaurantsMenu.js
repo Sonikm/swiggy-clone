@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getData from "../utilities/getData";
+import getData from "../util/getData";
 
 function useRestaurantsMenu(resId) {
   const [resMenuData, setResMenuData] = useState(null);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getData from "../utilities/getData";
+import getData from "../util/getData";
 
 function useSearchSelectedTab(cuisine) {
   const [searchRestaurants, setSearchRestaurants] = useState(null);

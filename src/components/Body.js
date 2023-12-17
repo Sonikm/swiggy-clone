@@ -1,5 +1,5 @@
 import Banner from "./Banner"
-import FoodItems from "./FoodCategories"
+import FoodCollections from "./FoodCollections"
 import RestaurantsList from "./RestaurantsList"
 import TopRestaurants from "./TopRestaurants"
 
@@ -7,7 +7,7 @@ function Body() {
     return (
         <div className="w-full flex items-center justify-center flex-col">
            <Banner/>
-           <FoodItems/>
+           <FoodCollections/>
            <TopRestaurants/>
            <RestaurantsList/>
         </div>

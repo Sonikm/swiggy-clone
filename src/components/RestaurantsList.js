@@ -16,7 +16,7 @@ function RestaurantsList() {
       <FilterRes />
       <div className="no-scrollbar mt-8 flex flex-row flex-wrap items-center justify-evenly gap-3">
         {restaurantsList?.map((restaurant) => (
-          <Link to={`/menu/${restaurant.info.id}`} key={restaurant.info.id}>
+          <Link to={`/restaurants/${restaurant?.info?.name}/${restaurant?.info?.id}`} key={restaurant?.info?.id}>
             <RestaurantCard restaurant={restaurant.info} />
           </Link>
         ))}

@@ -14,7 +14,7 @@ function TopRestaurants() {
       <h1 className=" text-2xl font-bold">Top restaurant chains in Delhi</h1>
       <div className="no-scrollbar mt-8 flex flex-row flex-nowrap gap-3  overflow-x-scroll mb-10">
         {topRestaurants.map((restaurant) => (
-          <Link to={`menu/${restaurant.info.id}`} key={restaurant.info.id}>
+          <Link to={`topRestaurants/${restaurant.info.name}/${restaurant.info.id}`} key={restaurant.info.id}>
             <RestaurantCard restaurant={restaurant.info} />
           </Link>
         ))}
