@@ -3,9 +3,9 @@ import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import usePopularCuisines from "../hooks/usePopularCuisines";
 import useSearchAutoSuggestCuisines from "../hooks/useSearchAutoSuggestCuisines";
 import { ReactComponent as ClearIcon } from "../assets/clear_icon.svg";
-import { AutoSearchCuisinesList } from "./AutoSearchCuisinesList";
-import RecentSearches from "./RecentSearches";
-import PopularCuisinesList from "./PopularCuisinesList";
+import { AutoSearchCuisinesList } from "../components/AutoSearchCuisinesList";
+import RecentSearches from "../components/RecentSearches";
+import PopularCuisinesList from "../components/PopularCuisinesList";
 
 function Search() {
   const [searchText, setSearchText] = useState(null);
@@ -17,12 +17,12 @@ function Search() {
 
   return (
     <div className=" relative flex w-full flex-col items-center justify-center text-gray-500 ">
-      <div className=" fixed z-30 top-28 flex w-[70%] items-center justify-between rounded border border-gray-300 px-2 text-lg ">
+      <div className=" fixed top-28 z-30 flex w-[70%] items-center justify-between rounded border border-gray-300 px-2 text-lg ">
         <input
           value={searchText || ""}
           type="text"
           placeholder="Search for restaurants and food"
-          className="flex-1 p-4 outline-none  placeholder:text-gray-400 text-sm"
+          className="flex-1 p-4 text-sm  outline-none placeholder:text-gray-400"
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button onClick={() => setSearchText(searchText ? null : searchText)}>
@@ -34,20 +34,25 @@ function Search() {
         </button>
       </div>
 
-      <div className="bg-white w-full fixed top-0 h-48 z-10"></div>
+      <div className="fixed top-0 z-10 h-48 w-full bg-white"></div>
 
-        <div className="mb-10 z-0 mt-28 overflow-y-scroll no-scrollbar  flex w-[70%] flex-col gap-6  px-4">
+      <div className="no-scrollbar z-0 mb-10 mt-28 flex  w-[70%] flex-col gap-6 overflow-y-scroll  px-4">
         {searchText ? (
-        <AutoSearchCuisinesList autoSuggestCuisines={autoSuggestCuisines} setSearchText={setSearchText} searchText={searchText} />
-      ) : (
-        <>
-          <RecentSearches setSearchText={setSearchText} />
-          <PopularCuisinesList popularCuisinesList={popularCuisines} setSearchText={setSearchText} />
-        </>
-      )}
-     
+          <AutoSearchCuisinesList
+            autoSuggestCuisines={autoSuggestCuisines}
+            setSearchText={setSearchText}
+            searchText={searchText}
+          />
+        ) : (
+          <>
+            <RecentSearches setSearchText={setSearchText} />
+            <PopularCuisinesList
+              popularCuisinesList={popularCuisines}
+              setSearchText={setSearchText}
+            />
+          </>
+        )}
       </div>
-     
     </div>
   );
 }

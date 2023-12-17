@@ -1,20 +1,20 @@
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
+import Header from "./pages/Header";
+import Body from "./pages/Body";
+import Footer from "./pages/Footer";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import RestaurantsMenu from "./components/RestaurantsMenu";
-import Search from "./components/Search";
-import Offers from "./components/Offers";
-import SignIn from "./components/SignIn";
-import Cart from "./components/Cart";
-import ErrorPage from "./components/ErrorPage";
-import FoodCollectionItem from "./components/FoodCollectionItems";
+import RestaurantsMenu from "./pages/RestaurantsMenu";
+import Search from "./pages/Search";
+import Offers from "./pages/Offers";
+import SignIn from "./pages/SignIn";
+import Cart from "./pages/Cart";
+import ErrorPage from "./pages/ErrorPage";
+import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
 
 function AppLayout() {
   return (
     <div className="app text-medium">
       <Header />
-      <Outlet/>
+      <Outlet />
       <Footer />
     </div>
   );

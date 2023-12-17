@@ -2,11 +2,11 @@ import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { useParams } from "react-router-dom";
 import useRestaurantsMenu from "../hooks/useRestaurantsMenu";
 import { useEffect, useState } from "react";
-import { ResOfferCards } from "./ResOfferCards";
+import { ResOfferCards } from "../components/ResOfferCards";
 import ResPriceLogo from "../assets/item_price.svg";
 import deliveryTimeLogo from "../assets/distance.svg";
 import ratingLogo from "../assets/star.png";
-import { MenuList } from "./MenuList";
+import { MenuList } from "../components/MenuList";
 
 function RestaurantsMenu() {
   const { resId } = useParams();
@@ -14,8 +14,6 @@ function RestaurantsMenu() {
   const [resOffers, setResOffers] = useState(null);
   const [resMenuList, setResMenuList] = useState(null);
   const { resMenuData } = useRestaurantsMenu(resId);
-
-  
 
   useEffect(() => {
     if (resMenuData && resMenuData.length > 0) {

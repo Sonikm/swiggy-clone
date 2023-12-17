@@ -1,7 +1,7 @@
-import Banner from "./Banner"
-import FoodCollections from "./FoodCollections"
-import RestaurantsList from "./RestaurantsList"
-import TopRestaurants from "./TopRestaurants"
+import Banner from "../components/Banner"
+import FoodCollections from "../components/FoodCollections"
+import RestaurantsList from "../components/RestaurantsList"
+import TopRestaurants from "../components/TopRestaurants"
 
 function Body() {
     return (
