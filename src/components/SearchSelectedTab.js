@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SearchSelectedTabRestaurants } from "./SearchSelectedTabRestaurants";
 import { SearchSelectedTabDish } from "./SearchSelectedTabDish";
 
-function SearchSelectedTab({searchText}) {
+function SearchSelectedTab() {
   const [selectedTab, setSelectedTab] = useState("restaurant");
 
   return (
@@ -32,9 +32,9 @@ function SearchSelectedTab({searchText}) {
 
       <div className="bg-gray-100  p-5">
         {selectedTab === "restaurant" ? (
-          <SearchSelectedTabRestaurants searchText={searchText} />
+          <SearchSelectedTabRestaurants />
         ) : (
-          <SearchSelectedTabDish searchText={searchText} />
+          <SearchSelectedTabDish/>
         )}
       </div>
     </div>

@@ -1,9 +1,13 @@
 import useSearchSelectedTab from "../hooks/useSearchSelected";
 import { Link } from "react-router-dom";
 import { SearchTabRestaurantsList } from "./SearchTabRestaurantsList";
+import SearchContext from "../contexts/SearchContext";
+import { useContext } from "react";
 
-export function SearchSelectedTabRestaurants({ searchText }) {
-  const { searchRestaurants } = useSearchSelectedTab(searchText);
+
+export function SearchSelectedTabRestaurants() {
+  const {searchText} = useContext(SearchContext);
+  const { searchRestaurants } = useSearchSelectedTab(searchText.restaurant);
 
   if (searchRestaurants === undefined || searchRestaurants === null)
     return <h1>No data</h1>;

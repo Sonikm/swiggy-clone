@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { DATA_IMG_URL } from "../constants/data";
 import {useSearchParams} from "react-router-dom";
+import SearchContext from "../contexts/SearchContext";
 
-function PopularCuisinesList({ popularCuisinesList, setSearchText }) {
+function PopularCuisinesList({ popularCuisinesList }) {
   const [, setSearchParams] = useSearchParams();
   
   return (
@@ -11,7 +13,7 @@ function PopularCuisinesList({ popularCuisinesList, setSearchText }) {
       </h2>
       <div className="no-scrollbar mb-20 mt-6 flex flex-row gap-4 overflow-x-scroll">
         {popularCuisinesList?.map((cuisine) => (
-          <PopularCuisines entityId={cuisine?.entityId} setSearchParams={setSearchParams} setSearchText={setSearchText}
+          <PopularCuisines entityId={cuisine?.entityId} setSearchParams={setSearchParams} 
             key={cuisine.id}
             cuisineImg={DATA_IMG_URL + cuisine?.imageId}
           />
@@ -23,14 +25,15 @@ function PopularCuisinesList({ popularCuisinesList, setSearchText }) {
 
 export default PopularCuisinesList;
 
-function PopularCuisines({ cuisineImg, entityId, setSearchParams, setSearchText }) {
+function PopularCuisines({ cuisineImg, entityId, setSearchParams }) {
+  const {setSearchText} = useContext(SearchContext)
 
   function handleSearchCuisines(){
     const url = new URL(entityId);
     const queryValue = url.searchParams.get("query");
     const newUrl = `?query=${ encodeURIComponent(queryValue)}`;
     setSearchParams(newUrl);
-    setSearchText(queryValue);
+    setSearchText({restaurant: queryValue});
   }
 
   return (

@@ -9,13 +9,23 @@ import SignIn from "./pages/SignIn";
 import Cart from "./pages/Cart";
 import ErrorPage from "./pages/ErrorPage";
 import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
+import { useState } from "react";
+import SearchContext from "./contexts/SearchContext";
 
 function AppLayout() {
+
+  // This is modify the searchText
+  const [searchText, setSearchText] = useState({
+    restaurant: null,
+  });
+
   return (
     <div className="app text-medium">
-      <Header />
-      <Outlet />
-      <Footer />
+      <SearchContext.Provider value={{searchText: searchText, setSearchText: setSearchText}}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </SearchContext.Provider>
     </div>
   );
 }

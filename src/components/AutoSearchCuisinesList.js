@@ -1,23 +1,26 @@
 import { useSearchParams } from "react-router-dom";
 import { DATA_IMG_URL } from "../constants/data";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SearchSelectedTab from "./SearchSelectedTab";
-export function AutoSearchCuisinesList({ autoSuggestCuisines, setSearchText, searchText }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+import SearchContext from "../contexts/SearchContext";
+
+
+export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
+  const [, setSearchParams] = useSearchParams();
   const [isSearchDetails, setIsSearchDetails] = useState(false);
+  const {setSearchText} = useContext(SearchContext);
 
   function handleSearchCuisines(cuisine) {
     // const query = searchParams.get("query");
     setSearchParams({ query: cuisine });
+    setSearchText({restaurant: cuisine})
     setIsSearchDetails(true);
-    setSearchText(cuisine);
-    console.log(isSearchDetails);
   }
 
   return (
     <>
       {isSearchDetails ? (
-        <SearchSelectedTab searchText={searchText} />
+        <SearchSelectedTab/>
       ) : (
         <div className="flex flex-col gap-2">
           {autoSuggestCuisines?.map((cuisine, index) => (

@@ -2,10 +2,13 @@ import useSearchSelectedTab from "../hooks/useSearchSelected";
 import { DATA_IMG_URL } from "../constants/data";
 import { useEffect, useState } from "react";
 import icon from "../assets/placeholder_food_img.jpg";
+import SearchContext from "../contexts/SearchContext";
+import { useContext } from "react";
 
-export function SearchSelectedTabDish({searchText}) {
+export function SearchSelectedTabDish() {
+  const {searchText} = useContext(SearchContext);
   const [dishList, setDishList] = useState([]);
-  const { searchDish } = useSearchSelectedTab(searchText);
+  const { searchDish } = useSearchSelectedTab(searchText.restaurant);
 
   useEffect(() => {
     setDishList(searchDish?.filter((item) => item?.card?.card?.info));
