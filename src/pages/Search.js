@@ -13,7 +13,7 @@ function Search() {
   const { popularCuisines } = usePopularCuisines();
   const { autoSuggestCuisines } = useSearchAutoSuggestCuisines(searchText.restaurant);
 
-  if (autoSuggestCuisines === undefined || autoSuggestCuisines === null)
+  if (popularCuisines === undefined || popularCuisines === null)
     return <h1>No data</h1>;
 
   return (
