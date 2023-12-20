@@ -12,7 +12,6 @@ import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
 import { useState } from "react";
 import SearchContext from "./contexts/SearchContext";
 import SearchLocation from "./components/SearchLocation";
-import SearchLocationContext from "./contexts/SearchLocationContext";
 
 function AppLayout() {
   // This is modify the searchText
@@ -20,29 +19,19 @@ function AppLayout() {
     restaurant: null,
   });
 
-  const [searchLocation, setSearchLocation] = useState({
-    isSearch: false,
-  });
+  const [isSearchPlace, setIsSearchPlace] = useState(false);
 
   return (
     <div className="app text-medium">
-      <SearchLocationContext.Provider
-        value={{
-          searchLocation: searchLocation,
-          setSearchLocation: setSearchLocation,
-        }}
-      >
-        <SearchContext.Provider
-          value={{ searchText: searchText, setSearchText: setSearchText }}
-        >
-          {searchLocation.isSearch ? <SearchLocation /> : ""}
-          <div className={searchLocation.isSearch ? "isSearchLocation" : ""}>
-            <Header />
+     
+        <SearchContext.Provider value={{ searchText: searchText, setSearchText: setSearchText }}>
+          {isSearchPlace && <SearchLocation setIsSearchPlace={setIsSearchPlace} />}
+          <div className={isSearchPlace && "isSearchLocation"}>
+            <Header setIsSearchPlace={setIsSearchPlace} />
             <Outlet />
             <Footer />
           </div>
         </SearchContext.Provider>
-      </SearchLocationContext.Provider>
     </div>
   );
 }

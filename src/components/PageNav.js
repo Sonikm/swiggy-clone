@@ -8,15 +8,11 @@ import { ReactComponent as OffersIcon } from "../assets/asset 51.svg";
 import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { ReactComponent as SignInIcon } from "../assets/asset 49.svg";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import SearchLocationContext from "../contexts/SearchLocationContext";
 
-export default function PageNav() {
-  const { searchLocation, setSearchLocation } = useContext(SearchLocationContext);
+export default function PageNav({setIsSearchPlace}) {
 
   function handleSearchForRestaurant() {
-    setSearchLocation({isSearch: true})
-    console.log(searchLocation.isSearch);
+    setIsSearchPlace(true)
   }
 
   return (
