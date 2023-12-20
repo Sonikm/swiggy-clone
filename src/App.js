@@ -11,21 +11,38 @@ import ErrorPage from "./pages/ErrorPage";
 import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
 import { useState } from "react";
 import SearchContext from "./contexts/SearchContext";
+import SearchLocation from "./components/SearchLocation";
+import SearchLocationContext from "./contexts/SearchLocationContext";
 
 function AppLayout() {
-
   // This is modify the searchText
   const [searchText, setSearchText] = useState({
     restaurant: null,
   });
 
+  const [searchLocation, setSearchLocation] = useState({
+    isSearch: false,
+  });
+
   return (
     <div className="app text-medium">
-      <SearchContext.Provider value={{searchText: searchText, setSearchText: setSearchText}}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </SearchContext.Provider>
+      <SearchLocationContext.Provider
+        value={{
+          searchLocation: searchLocation,
+          setSearchLocation: setSearchLocation,
+        }}
+      >
+        <SearchContext.Provider
+          value={{ searchText: searchText, setSearchText: setSearchText }}
+        >
+          {searchLocation.isSearch ? <SearchLocation /> : ""}
+          <div className={searchLocation.isSearch ? "isSearchLocation" : ""}>
+            <Header />
+            <Outlet />
+            <Footer />
+          </div>
+        </SearchContext.Provider>
+      </SearchLocationContext.Provider>
     </div>
   );
 }

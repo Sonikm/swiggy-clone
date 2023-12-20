@@ -8,10 +8,19 @@ import { ReactComponent as OffersIcon } from "../assets/asset 51.svg";
 import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { ReactComponent as SignInIcon } from "../assets/asset 49.svg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import SearchLocationContext from "../contexts/SearchLocationContext";
 
 export default function PageNav() {
+  const { searchLocation, setSearchLocation } = useContext(SearchLocationContext);
+
+  function handleSearchForRestaurant() {
+    setSearchLocation({isSearch: true})
+    console.log(searchLocation.isSearch);
+  }
+
   return (
-    <div className="fixed w-full top-0 nav-shadow z-20 flex flex-1 items-center justify-center bg-white">
+    <div className="nav-shadow fixed top-0 z-20 flex w-full flex-1 items-center justify-center bg-white">
       <div className="flex max-w-7xl flex-1 items-center justify-between gap-28  p-4 px-8 ">
         <div className="flex items-center justify-between gap-10 ">
           <Link to="/">
@@ -21,13 +30,16 @@ export default function PageNav() {
               alt="logo"
             />
           </Link>
-          <div className="flex cursor-pointer items-center justify-between gap-2 whitespace-nowrap text-sm">
+          <button
+            onClick={() => handleSearchForRestaurant()}
+            className="flex cursor-pointer items-center justify-between gap-2 whitespace-nowrap text-sm"
+          >
             <span className="text-bold underline decoration-2 underline-offset-5 transition-all hover:text-red-500 hover:decoration-orange-600">
               IMT Manesar
             </span>
             <p className="mr-2 text-slate-600">522, Sector 8, IMT Manesar </p>
             <FontAwesomeIcon icon={faChevronDown} className="text-red-500" />
-          </div>
+          </button>
         </div>
         <ul className="flex items-center justify-between gap-16 whitespace-nowrap text-base">
           <li>
