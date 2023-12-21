@@ -8,12 +8,28 @@ import { ReactComponent as OffersIcon } from "../assets/asset 51.svg";
 import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { ReactComponent as SignInIcon } from "../assets/asset 49.svg";
 import { Link } from "react-router-dom";
+import useRestaurantsPlaceId from "../hooks/useRestaurantsPlaceId";
+import useRestaurantsData from "../hooks/useRestaurantsData";
+import { useDispatch } from "react-redux";
+import { addLocationLatLng } from "../util/locationSlice";
+import { useEffect } from "react";
 
-export default function PageNav({setIsSearchPlace}) {
+export default function PageNav({ setIsSearchPlace }) {
+  const { restaurantPlaceName } = useRestaurantsPlaceId();
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(restaurantPlaceName) {
+      dispatch(addLocationLatLng(restaurantPlaceName?.geometry?.location))
+    }
+  },[restaurantPlaceName, dispatch])
 
   function handleSearchForRestaurant() {
-    setIsSearchPlace(true)
+    setIsSearchPlace(true);
   }
+
+  if (restaurantPlaceName === undefined || restaurantPlaceName === null)
+    return;
 
   return (
     <div className="nav-shadow fixed top-0 z-20 flex w-full flex-1 items-center justify-center bg-white">
@@ -30,10 +46,12 @@ export default function PageNav({setIsSearchPlace}) {
             onClick={() => handleSearchForRestaurant()}
             className="flex cursor-pointer items-center justify-between gap-2 whitespace-nowrap text-sm"
           >
-            <span className="text-bold underline decoration-2 underline-offset-5 transition-all hover:text-red-500 hover:decoration-orange-600">
-              IMT Manesar
-            </span>
-            <p className="mr-2 text-slate-600">522, Sector 8, IMT Manesar </p>
+            {/* <span className="text-bold underline decoration-2 underline-offset-5 transition-all hover:text-red-500 hover:decoration-orange-600">
+             {(restaurantPlaceName?.address_components[0]?.types[0] === "locality" || restaurantPlacePlace?.address_components[0]?.types[0] === "city")  && restaurantPlacePlace?.address_components[0]?.long_name }
+            </span> */}
+            <p className="mr-2 line-clamp-1 w-40 overflow-ellipsis text-slate-600">
+              {restaurantPlaceName?.formatted_address}{" "}
+            </p>
             <FontAwesomeIcon icon={faChevronDown} className="text-red-500" />
           </button>
         </div>

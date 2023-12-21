@@ -12,6 +12,8 @@ import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
 import { useState } from "react";
 import SearchContext from "./contexts/SearchContext";
 import SearchLocation from "./components/SearchLocation";
+import {Provider} from "react-redux";
+import store from "./util/store";
 
 function AppLayout() {
   // This is modify the searchText
@@ -23,15 +25,16 @@ function AppLayout() {
 
   return (
     <div className="app text-medium">
-     
+      <Provider store={store}>
         <SearchContext.Provider value={{ searchText: searchText, setSearchText: setSearchText }}>
           {isSearchPlace && <SearchLocation setIsSearchPlace={setIsSearchPlace} />}
-          <div className={isSearchPlace && "isSearchLocation"}>
+          <div className={isSearchPlace ? "isSearchLocation" : ""}>
             <Header setIsSearchPlace={setIsSearchPlace} />
             <Outlet />
             <Footer />
           </div>
         </SearchContext.Provider>
+        </Provider>
     </div>
   );
 }

@@ -2,11 +2,14 @@ import { useState } from "react";
 import closeMenuIcon from "../assets/clear_icon.svg";
 import locationIcon from "../assets/location.png";
 import useSearchAutocompletePlace from "../hooks/useSearchAutocompletePlace";
+import {useDispatch} from "react-redux";
+import { addLocation } from "../util/locationSlice";
 
 function SearchLocation({ setIsSearchPlace}) {
 
   const [searchText, setSearchText] = useState("");
   const { autocompletePlace } = useSearchAutocompletePlace(searchText);
+
 
   return (
     <div className={`search_location_slidebar slideIn`}>
@@ -30,6 +33,8 @@ function SearchLocation({ setIsSearchPlace}) {
             <AutoCompletePlaceName
               autocompletePlace={item?.structured_formatting}
               key={item?.place_id}
+              placeID={item?.place_id}
+            setIsSearchPlace={setIsSearchPlace}
             />
           ))}
       </div>
@@ -39,11 +44,19 @@ function SearchLocation({ setIsSearchPlace}) {
 
 export default SearchLocation;
 
-function AutoCompletePlaceName({ autocompletePlace }) {
+function AutoCompletePlaceName({ autocompletePlace ,placeID, setIsSearchPlace}) {
   const { main_text, secondary_text } = autocompletePlace;
+  const dispatch = useDispatch();
+
+  
+  function handleShowPlaceId(placeID) {
+    setIsSearchPlace(false)
+    dispatch(addLocation(placeID))
+    }
+
 
   return (
-    <div className=" mx-10 flex flex-col">
+    <div onClick={()=> handleShowPlaceId(placeID)}  className=" mx-10 flex flex-col">
       <div className="my-5 flex cursor-pointer  flex-col justify-start gap-1">
         <div className="flex items-center gap-1">
           <img className="h-4" src={locationIcon} alt="" />
