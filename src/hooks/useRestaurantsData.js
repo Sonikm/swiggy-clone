@@ -23,6 +23,8 @@ function useRestaurantsData() {
         data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants,
       );
+
+      // console.log(data?.data)
     }
     fetchData();
   }, []);

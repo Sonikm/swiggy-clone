@@ -11,8 +11,6 @@ export function SearchTabRestaurantsList({ searchRestaurants }) {
     id,
   } = searchRestaurants;
 
-  console.log(name + " " + id);
-
   return (
     <div className="flex cursor-pointer items-center justify-start gap-3 bg-white p-3">
       <img

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import icon from "../assets/placeholder_food_img.jpg";
 import SearchContext from "../contexts/SearchContext";
 import { useContext } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { addItem } from "../util/cartSlice";
 
 export function SearchSelectedTabDish() {
   const {searchText} = useContext(SearchContext);
@@ -28,6 +30,18 @@ export function SearchSelectedTabDish() {
 function DishCard({ dish }) {
   const { name, description, imageId, price } = dish;
 
+  const dispatch = useDispatch(); 
+  const cartItems = useSelector((store) => store.cart.items);
+
+  if(!price) return;
+
+  function handleAddToCart(menu) {
+    const isAlreadyAdded = cartItems.some((item) => item.id === menu.id);
+
+    if (!isAlreadyAdded) {
+      dispatch(addItem(menu));
+    }    
+  }
   return (
     <div className="flex w-full items-center justify-between gap-6 rounded-lg bg-white p-4 ">
       <div className="flex flex-col text-sm ">
@@ -48,13 +62,13 @@ function DishCard({ dish }) {
       </div>
       <div className=" flex w-[300px] flex-col  items-center justify-start ">
         <img
-          className=" h-[100px] flex-none rounded-md"
+          className=" h-[100px] flex-none rounded-md w-[100px]"
           src={ imageId ? DATA_IMG_URL + imageId : icon}
           alt=""
         />
-        <span className=" -mt-6  cursor-pointer  rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg">
+        <button onClick={()=> handleAddToCart(dish)}  className=" -mt-6  cursor-pointer  rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg">
           ADD
-        </span>
+        </button>
       </div>
     </div>
   );

@@ -120,3 +120,7 @@
   height: 100vh;
 }
 
+.cart-items-scroll {
+  overflow-y: scroll;
+  height: 66vh;
+}

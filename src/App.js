@@ -12,6 +12,9 @@ import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
 import { useState } from "react";
 import SearchContext from "./contexts/SearchContext";
 import SearchLocation from "./components/SearchLocation";
+import { Provider } from "react-redux";
+import store from "./util/store";
+import Order from "./pages/Order";
 
 function AppLayout() {
   // This is modify the searchText
@@ -22,17 +25,19 @@ function AppLayout() {
   const [isSearchPlace, setIsSearchPlace] = useState(false);
 
   return (
+    <Provider store={store}>
     <div className="app text-medium">
      
         <SearchContext.Provider value={{ searchText: searchText, setSearchText: setSearchText }}>
           {isSearchPlace && <SearchLocation setIsSearchPlace={setIsSearchPlace} />}
-          <div className={isSearchPlace && "isSearchLocation"}>
+          <div className={isSearchPlace ? "isSearchLocation" : ""}>
             <Header setIsSearchPlace={setIsSearchPlace} />
             <Outlet />
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </SearchContext.Provider>
     </div>
+    </Provider>
   );
 }
 
@@ -81,8 +86,13 @@ const AppRouter = createBrowserRouter([
       },
 
       {
-        path: "Cart",
+        path: "/cart",
         element: <Cart />,
+      },
+
+      {
+        path: "/cart/order",
+        element: <Order />,
       },
     ],
   },

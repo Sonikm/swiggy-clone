@@ -1,8 +1,23 @@
 import { HorizontalRollar } from "./HorizontalRollar";
 import { DATA_IMG_URL } from "../constants/data";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../util/cartSlice";
 
 export function MenuItem({ menu }) {
-  const { name, description, imageId, isVeg, price, isBestSeller } = menu;
+  const { name, description, imageId, price } = menu;
+  const dispatch = useDispatch();
+  const cartItems = useSelector((store) => store.cart.items);
+
+  if(!price) return;
+
+  function handleAddToCart(menu) {
+    const isAlreadyAdded = cartItems.some((item) => item.id === menu.id);
+
+    if (!isAlreadyAdded) {
+      dispatch(addItem(menu));
+    }    
+  }
+
   return (
     <>
       <HorizontalRollar />
@@ -18,16 +33,21 @@ export function MenuItem({ menu }) {
             <span className="text-orange-400"> Bestseller</span>
           </div>
           <p className="text-base">{name}</p>
-          <p>₹{price / 100}</p>
-          <p className="mt-2 text-xs text-zinc-400">{description}</p>
+          <p>₹{price / 100 || ""}</p>
+          <p className="mt-2 line-clamp-2 overflow-ellipsis text-xs text-zinc-400">
+            {description}
+          </p>
         </div>
         <div className=" flex flex-col items-center justify-start ">
           <img
-            className="w-[120px]  rounded-md"
+            className="h-[100px] w-[100px] rounded-md"
             src={DATA_IMG_URL + imageId}
             alt=""
           />
-          <span className=" -mt-6 w-[100px] rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg">
+          <span
+            onClick={() => handleAddToCart(menu)}
+            className=" -mt-6 w-[100px] cursor-pointer rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg"
+          >
             ADD
           </span>
         </div>

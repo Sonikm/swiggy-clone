@@ -30,7 +30,7 @@ function SearchSelectedTab() {
         </div>
       </div>
 
-      <div className="bg-gray-100  p-5">
+      <div className="bg-gray-100 p-5 ">
         {selectedTab === "restaurant" ? (
           <SearchSelectedTabRestaurants />
         ) : (

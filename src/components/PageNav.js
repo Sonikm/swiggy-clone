@@ -8,8 +8,11 @@ import { ReactComponent as OffersIcon } from "../assets/asset 51.svg";
 import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { ReactComponent as SignInIcon } from "../assets/asset 49.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function PageNav({setIsSearchPlace}) {
+
+  const cartItems = useSelector(store => store.cart.items)
 
   function handleSearchForRestaurant() {
     setIsSearchPlace(true)
@@ -73,7 +76,7 @@ export default function PageNav({setIsSearchPlace}) {
               to="cart"
               className="flex cursor-pointer items-center justify-center gap-2 text-slate-600 hover:text-red-500"
             >
-              <FontAwesomeIcon icon={faCartShopping} /> <span>Cart</span>
+              <FontAwesomeIcon icon={faCartShopping} /> <span>Cart ({cartItems.length}) </span>
             </Link>
           </li>
         </ul>
