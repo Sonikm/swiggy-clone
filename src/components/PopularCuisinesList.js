@@ -5,6 +5,8 @@ import SearchContext from "../contexts/SearchContext";
 
 function PopularCuisinesList({ popularCuisinesList }) {
   const [, setSearchParams] = useSearchParams();
+
+  if(!popularCuisinesList) return;
   
   return (
     <div className="my-4">

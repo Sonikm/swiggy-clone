@@ -7,6 +7,7 @@ import ResPriceLogo from "../assets/item_price.svg";
 import deliveryTimeLogo from "../assets/distance.svg";
 import ratingLogo from "../assets/star.png";
 import { MenuList } from "../components/MenuList";
+import SearchTabLoading from "../components/SearchTabLoading";
 
 function RestaurantsMenu() {
   const { resId } = useParams();
@@ -36,7 +37,7 @@ function RestaurantsMenu() {
     }
   }, [resMenuData]);
 
-  if (resInfo === null || resInfo === undefined) return <h1>No data</h1>;
+  if (!resInfo) return <SearchTabLoading/>;
 
   const {
     city,

@@ -4,20 +4,23 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "../components/RestaurantsCard";
 import { Link } from "react-router-dom";
 import FilterRes from "../components/FilterRes";
+import RestaurantsLoadingScreen from "../components/RestaurantsLoadingScreen";
 
 function FoodCollectionItem() {
   const [foodCollectionList, setFoodCollectionList] = useState([]);
   const { collectionId } = useParams();
   const { foodCollection } = useFoodCollectionItemData(collectionId);
 
+  console.log(collectionId)
+
+  
   useEffect(() => {
     setFoodCollectionList(
       foodCollection?.filter((item) => item?.card?.card?.info),
-    );
-  }, [foodCollection]);
-
-  if (foodCollection === undefined || foodCollection === null)
-    return <h1>No data</h1>;
+      );
+    }, [foodCollection]);
+    
+    if(!foodCollection) return <RestaurantsLoadingScreen/>
 
   const { title, description } = foodCollection[0]?.card?.card;
   const { text } = foodCollection[2]?.card?.card?.gridElements?.infoWithStyle;

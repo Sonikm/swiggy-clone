@@ -4,12 +4,12 @@ import leftArrow from "../assets/asset 53.svg";
 import rightArrow from "../assets/asset 54.svg";
 import { Link } from "react-router-dom";
 import { HorizontalRollar } from "./HorizontalRollar";
-import {getCollectionIdFromUrl} from "../util/helper_functions"
+import { getCollectionIdFromUrl } from "../util/helper_functions";
 
 function FoodCollections() {
   const { collectionItems } = useRestaurantsData();
 
-  if (collectionItems === undefined || collectionItems === null) return <h1>No data</h1>;
+  if (!collectionItems) return;
 
   return (
     <div className="w-5/6">
@@ -24,11 +24,13 @@ function FoodCollections() {
           </span>
         </div>
       </div>
-      <div className="no-scrollbar flex gap-4 overflow-x-scroll mb-10">
+      <div className="no-scrollbar mb-10 flex gap-4 overflow-x-scroll">
         {collectionItems?.map((item) => (
           <Link
             key={item?.id}
-            to={`collections/${item?.action?.text}/${getCollectionIdFromUrl(item?.entityId)}`}
+            to={`collections/${item?.action?.text}/${getCollectionIdFromUrl(
+              item?.entityId,
+            )}`}
             className="w-[140px] flex-none"
           >
             <img src={`${DATA_IMG_URL + item?.imageId}`} alt="" />

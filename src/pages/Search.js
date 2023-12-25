@@ -13,9 +13,6 @@ function Search() {
   const { popularCuisines } = usePopularCuisines();
   const { autoSuggestCuisines } = useSearchAutoSuggestCuisines(searchText.restaurant);
 
-  if (popularCuisines === undefined || popularCuisines === null)
-    return <h1>No data</h1>;
-
   return (
     <div className=" relative flex w-full flex-col items-center justify-center text-gray-500 ">
       <div className=" fixed top-28 z-30 flex w-[70%] items-center justify-between rounded border border-gray-300 px-2 text-lg ">

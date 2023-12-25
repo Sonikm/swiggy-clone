@@ -2,11 +2,12 @@ import useRestaurantsData from "../hooks/useRestaurantsData";
 import { DATA_IMG_URL } from "../constants/data";
 import leftArrow from "../assets/asset 53.svg";
 import rightArrow from "../assets/asset 54.svg";
+import BannerLoadingScreen from "./BannerLoadingScreen";
 
 function Banner() {
   const { bestOffers } = useRestaurantsData();
 
-  if (bestOffers === undefined || bestOffers === null) return <h1>No data</h1>;
+  if (!bestOffers) return <BannerLoadingScreen/>
 
   return (
     <div className="w-5/6">

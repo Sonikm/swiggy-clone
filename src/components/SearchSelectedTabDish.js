@@ -6,6 +6,7 @@ import SearchContext from "../contexts/SearchContext";
 import { useContext } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { addItem } from "../util/cartSlice";
+import SearchTabLoading from "./SearchTabLoading";
 
 export function SearchSelectedTabDish() {
   const {searchText} = useContext(SearchContext);
@@ -16,7 +17,7 @@ export function SearchSelectedTabDish() {
     setDishList(searchDish?.filter((item) => item?.card?.card?.info));
   }, [searchDish]);
 
-  if (searchDish === undefined || searchDish === null) return <h1>No data</h1>;
+  if (!searchDish) return <SearchTabLoading/>;
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
