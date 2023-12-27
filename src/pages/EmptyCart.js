@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import emptyCart from "../assets/empty_cart.png";
 
 function EmptyCart() {
@@ -8,9 +9,11 @@ function EmptyCart() {
       <p className="text-sm text-gray-500">
         You can go to home page to view more restaurants
       </p>
-      <button className="mt-4 bg-orange-500 p-3 px-4 text-sm text-white">
+      <Link to="/">
+      <button className="mt-4 outline-none bg-orange-500 p-3 px-4 text-sm text-white">
         SEE RESTAURANTS NEAR YOU
-      </button>
+      </button></Link>
+      
     </div>
   );
 }

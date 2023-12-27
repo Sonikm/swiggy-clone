@@ -27,7 +27,7 @@ function FoodCollectionItem() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      <div className="mt-16 flex max-w-[1100px] flex-col justify-start gap-3">
+      <div className="mt-10 flex max-w-[1100px] flex-col justify-start gap-3">
         <h2 className="text-4xl font-bold">{title}</h2>
         <p className="text-lg font-extralight text-gray-500 ">{description}</p>
 
@@ -41,7 +41,7 @@ function FoodCollectionItem() {
               to={`/collections/restaurants/${item?.card?.card?.info?.name}/${item?.card?.card?.info?.id}`}
               key={item?.card?.card?.info?.id}
             >
-              <RestaurantCard restaurant={item?.card?.card?.info} />
+              <RestaurantCard width={"w-64"} height={"h-44"}  restaurant={item?.card?.card?.info} />
             </Link>
           ))}
         </div>

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { ReactComponent as ClearIcon } from "../assets/clear_icon.svg";
 import { DATA_IMG_URL } from "../constants/data";
 import icon from "../assets/placeholder_food_img.jpg";
-import { addItem, removeItem } from "../util/cartSlice";
+import { decreaseItem, increaseItem, removeItem } from "../util/cartSlice";
 
 export function CartItems({ menu }) {
   const { name, imageId, price, quantity } = menu;
@@ -12,9 +12,14 @@ export function CartItems({ menu }) {
     dispatch(removeItem(item));
   }
 
-  function handleAddItem(menu){
-    dispatch(addItem(menu));
+  function handleIncreaseItem(item){
+    dispatch(increaseItem(item));
   }
+
+  function handleDecreaseItem(item){
+    dispatch(decreaseItem(item));
+  }
+
 
   return (
     <div className="flex flex-row items-center justify-start gap-4 bg-slate-100 p-2 pr-4">
@@ -35,11 +40,11 @@ export function CartItems({ menu }) {
         <div className="flex items-center justify-between gap-2">
           <div className="flex w-[100px] items-center justify-between  border-2 ">
                 <div className="flex h-8 w-8 cursor-pointer  items-center justify-center bg-gray-200 hover:bg-orange-500">
-            <button className="h-8 w-8 outline-none" onClick={()=>handleRemoveItem(menu)}>-</button>
+            <button className="h-8 w-8 outline-none" onClick={()=>handleDecreaseItem(menu)}>-</button>
             </div>
             <span>{quantity}</span>
             <div className="flex h-8 w-8 cursor-pointer  items-center justify-center bg-gray-200 hover:bg-orange-500">
-            <button className="h-8 w-8 outline-none" onClick={()=>handleAddItem(menu)}>+</button>
+            <button className="h-8 w-8 outline-none" onClick={()=>handleIncreaseItem(menu)}>+</button>
             </div>
           </div>
           <button className="hover:bg-gray-200 pl-1 pt-1 cursor-pointer  w-8 h-8 flex justify-center items-center rounded-full " onClick={() => handleRemoveItem(menu)}>

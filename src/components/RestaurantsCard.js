@@ -3,7 +3,7 @@ import vagIcon from "../assets/asset 55.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-function RestaurantCard({ restaurant }) {
+function RestaurantCard({ restaurant, width, height }) {
   const {
     name,
     cloudinaryImageId,
@@ -15,10 +15,10 @@ function RestaurantCard({ restaurant }) {
   } = restaurant;
 
   return (
-    <div className="flex w-80 flex-col gap-3 mb-6">
-      <div className="relative h-52 w-80  overflow-hidden rounded-2xl bg-cover bg-center">
+    <div className={width + ' hover:scale-95 transition-all flex flex-col gap-3 mb-6'}>
+      <div className={ width + ` ` + height +  ' relative overflow-hidden rounded-2xl bg-cover bg-center'}>
         <img src={`${DATA_IMG_URL + cloudinaryImageId}`} alt={name} />
-        <span className="absolute bottom-[5%] left-[5%] z-10 text-2xl font-bold text-white">
+        <span className="absolute bottom-[5%] left-[5%] z-10 text-xl line-clamp-2 overflow-hidden font-bold text-white">
           {aggregatedDiscountInfoV3?.header +
             " " +
             aggregatedDiscountInfoV3?.subHeader}
@@ -27,13 +27,14 @@ function RestaurantCard({ restaurant }) {
       </div>
 
       <div className="text-slate-600">
-        <h2 className="text-bold line-clamp-1 text-xl ">{name}</h2>
+        <h2 className="text-bold line-clamp-1 text-[18px] ">{name}</h2>
         <div className="flex gap-2">
           <img src={vagIcon} alt="" />
           <p className="flex items-center justify-center gap-1 font-bold">
             <span> {avgRating} </span>
             <span className=""> </span>
             <FontAwesomeIcon icon={faClock} className="text-orange-500" />
+            
             <span> {sla?.slaString}</span>
           </p>
         </div>

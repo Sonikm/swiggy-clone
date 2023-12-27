@@ -7,3 +7,30 @@ export function getCollectionIdFromUrl(url) {
   // Return null if collection_id is not found
   return null;
 }
+
+
+
+  export function filterByRating(restaurantsList, setFilterRestaurants) {
+  const data = restaurantsList?.filter((item) => item?.info?.avgRating >= 4);
+  setFilterRestaurants(data);
+}
+
+ export function filterByPureVeg(restaurantsList, setFilterRestaurants){
+  const data = restaurantsList?.filter((item) => item?.info?.veg === true);
+  setFilterRestaurants(data);
+}
+
+ export function filterByFastDelivery(restaurantsList, setFilterRestaurants){
+  const data = restaurantsList?.filter((item) => item?.info?.sla?.deliveryTime <= 30 );
+  setFilterRestaurants(data);
+}
+
+ export function filterByPriceLessThan300(restaurantsList, setFilterRestaurants){
+  const data =  restaurantsList?.filter((item) => item?.info?.costForTwo.match(/\d+/)[0] >= 300 );
+  setFilterRestaurants(data);
+}
+
+ export function filterByPriceGreaterThan300(restaurantsList, setFilterRestaurants){
+  const data =  restaurantsList?.filter((item) => item?.info?.costForTwo.match(/\d+/)[0] < 300 );
+  setFilterRestaurants(data);
+}
