@@ -7,15 +7,17 @@ import { AutoSearchCuisinesList } from "../components/AutoSearchCuisinesList";
 import RecentSearches from "../components/RecentSearches";
 import PopularCuisinesList from "../components/PopularCuisinesList";
 import SearchContext from "../contexts/SearchContext";
+import ToggleMenuContext from "../contexts/ToggleMenuContext";
 
 function Search() {
   const {searchText, setSearchText} = useContext(SearchContext);
   const { popularCuisines } = usePopularCuisines();
   const { autoSuggestCuisines } = useSearchAutoSuggestCuisines(searchText.restaurant);
+  const {toggleMenu} = useContext(ToggleMenuContext);
 
   return (
     <div className=" relative flex w-full flex-col items-center justify-center text-gray-500 ">
-      <div className=" fixed top-28 z-30 flex w-[70%] items-center justify-between rounded border border-gray-300 px-2 text-lg ">
+      <div className={`${toggleMenu.isActive && "md:z-0" } fixed top-28  z-30 md:w-10/12 flex w-[70%] xs:w-11/12 items-center justify-between rounded border border-gray-300 px-2 text-lg `}>
         <input
           value={searchText.restaurant || ""}
           type="text"
@@ -34,7 +36,7 @@ function Search() {
 
       <div className="fixed top-0 z-10 h-48 w-full bg-white"></div>
 
-      <div className="no-scrollbar z-0 mb-10 mt-28 flex  w-[70%] flex-col gap-6 overflow-y-scroll  px-4">
+      <div className="no-scrollbar z-0 mb-10 mt-28 flex md:w-10/12  w-[70%] xs:w-11/12 flex-col gap-6 overflow-y-scroll  px-4">
         {searchText.restaurant ? (
           <AutoSearchCuisinesList
             autoSuggestCuisines={autoSuggestCuisines}

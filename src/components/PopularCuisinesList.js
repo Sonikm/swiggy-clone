@@ -13,7 +13,7 @@ function PopularCuisinesList({ popularCuisinesList }) {
       <h2 className="text-bold my-4 text-[22px]  text-black">
         Popular Cuisines
       </h2>
-      <div className="no-scrollbar mb-20 mt-6 flex flex-row gap-4 overflow-x-scroll">
+      <div className="no-scrollbar xs:grid xs:grid-rows-2 xs:grid-flow-col mb-20 mt-6 flex flex-row gap-4 overflow-x-scroll">
         {popularCuisinesList?.map((cuisine) => (
           <PopularCuisines entityId={cuisine?.entityId} setSearchParams={setSearchParams} 
             key={cuisine.id}
@@ -39,7 +39,7 @@ function PopularCuisines({ cuisineImg, entityId, setSearchParams }) {
   }
 
   return (
-    <button className="w-16 cursor-pointer flex-none" onClick={(e) => handleSearchCuisines()}>
+    <button className="w-16 xs:w-12 cursor-pointer flex-none" onClick={(e) => handleSearchCuisines()}>
       <img src={cuisineImg} alt="" />
     </button>
   );

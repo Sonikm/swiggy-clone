@@ -2,7 +2,7 @@ import useRestaurantsData from "../hooks/useRestaurantsData";
 import { DATA_IMG_URL } from "../constants/data";
 import leftArrow from "../assets/asset 53.svg";
 import rightArrow from "../assets/asset 54.svg";
-import BannerLoadingScreen from "./BannerLoadingScreen";
+import BannerLoadingScreen from "../shimmerUIs/BannerLoadingScreen";
 
 function Banner() {
   const { bestOffers } = useRestaurantsData();

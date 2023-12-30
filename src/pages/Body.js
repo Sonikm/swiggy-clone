@@ -5,7 +5,7 @@ import TopRestaurants from "../components/TopRestaurants"
 
 function Body() {
     return (
-        <div className="w-full flex items-center justify-center flex-col">
+        <div className=" flex items-center justify-center flex-col mb-20">
            <Banner/>
            <FoodCollections/>
            <TopRestaurants/>

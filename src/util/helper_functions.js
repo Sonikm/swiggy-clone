@@ -1,11 +1,13 @@
 // Function to extract collection_id from the URL
 export function getCollectionIdFromUrl(url) {
+
+   // If entityId is found in the URL
   const match = url.match(/collection_id=(\d+)/);
   if (match && match[1]) {
     return parseInt(match[1], 10);
   }
-  // Return null if collection_id is not found
-  return null;
+  // Return If entityId is a proper ID 
+  return url;
 }
 
 

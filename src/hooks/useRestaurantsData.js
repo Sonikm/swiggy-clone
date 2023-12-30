@@ -16,20 +16,12 @@ function useRestaurantsData() {
 
       if (data?.data?.cards[0]?.card?.card?.id === "topical_banner") {
         setBestOffers(data?.data?.cards[0]?.card?.card?.imageGridCards?.info);
-      }else {
+      } else {
         setBestOffers([]);
       }
       setCollectionItems(
         data?.data?.cards[1]?.card?.card?.imageGridCards?.info ||
           data?.data?.cards[0]?.card?.card?.imageGridCards?.info,
-      );
-      setTopRestaurants(
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants ||
-          data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants ||
-          data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants,
       );
 
       setRestaurantsList(
@@ -38,7 +30,15 @@ function useRestaurantsData() {
         )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [],
       );
 
-      // console.log(data?.data)
+      // Data has reverse--> now finding data from last index
+      setTopRestaurants(
+        data?.data?.cards
+          ?.reverse()
+          ?.find(
+            (item) =>
+              item?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+          )?.card?.card?.gridElements?.infoWithStyle?.restaurants || null,
+      );
     }
     fetchData();
   }, []);

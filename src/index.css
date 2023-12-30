@@ -262,3 +262,42 @@ main {
   height: 300px;
 }
 
+ul.toggle-nav {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 0;
+  flex-direction: column;
+  height: 400px;
+  z-index: 55;
+  width: 100%;
+  padding: 10px;
+  gap: 0;
+  padding-block: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+.slideIn {
+  animation-name: slideIn;
+
+}
+
+
+ul.toggle-nav li {
+ font-size: 18px;
+}
+
+@media screen and (max-width: 640px) {
+  .loader {
+    width: 50px;
+    height: 50px;
+  }
+
+  .loader::after {
+    width: 45px;
+    height: 45px ;
+  }
+
+}

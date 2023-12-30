@@ -1,9 +1,8 @@
-import RestaurantsLoadingScreen from "../components/RestaurantsLoadingScreen";
+import RestaurantsLoadingScreen from "../shimmerUIs/RestaurantsLoadingScreen";
 import useRestaurantsData from "../hooks/useRestaurantsData";
 import FilterRes from "../components/FilterRes";
 import RestaurantCard from "../components/RestaurantsCard";
 import { Link } from "react-router-dom";
-import { HorizontalRollar } from "../components/HorizontalRollar";
 
 function Offers() {
   const { topRestaurants } = useRestaurantsData();
@@ -12,8 +11,8 @@ function Offers() {
 
   return (
     <div className="mb-4 mt-4 flex w-full flex-col justify-center items-center">
-       <div className="mb-4 mt-10 flex w-5/6 flex-col justify-start">
-       <h1 className=" mb-2 text-2xl font-bold">
+       <div className="mb-4 mt-8 xs:mt-0 flex w-5/6 flex-col justify-start">
+       <h1 className=" mb-2 text-2xl font-bold xs:text-lg">
         Best offers with online food delivery
       </h1>
       <FilterRes />
@@ -24,8 +23,7 @@ function Offers() {
             key={restaurant.info.id}
           >
             <RestaurantCard
-              width={"w-64"}
-              height={"h-44"}
+               header={"xs:text-3xl"} text={"xs:text-lg"} subHeader={"xs:text-2xl"} width={"w-64 sm:w-44 xs:w-full"} height={"h-44 xs:h-48 sm:h-32"}
               restaurant={restaurant.info}
             />
           </Link>

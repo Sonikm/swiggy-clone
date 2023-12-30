@@ -1,31 +1,50 @@
+// React and External Library Imports
+import React, { useState, lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
+
+// Local Component Imports
 import Header from "./pages/Header";
 import Body from "./pages/Body";
 import Footer from "./pages/Footer";
-import { createBrowserRouter, Outlet } from "react-router-dom";
 import RestaurantsMenu from "./pages/RestaurantsMenu";
 import Search from "./pages/Search";
-import Offers from "./pages/Offers";
 import Cart from "./pages/Cart";
 import PageNotFound from "./pages/PageNotFound";
 import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
-import { useState } from "react";
-import SearchContext from "./contexts/SearchContext";
 import SearchLocation from "./components/SearchLocation";
-import { Provider } from "react-redux";
-import store from "./util/store";
 import Order from "./pages/Order";
+import RestaurantsLoadingScreen from "./shimmerUIs/RestaurantsLoadingScreen";
 import Help from "./pages/Help";
 
+// Context Imports
+import SearchContext from "./contexts/SearchContext";
+import ToggleMenuContext from "./contexts/ToggleMenuContext";
+
+// Redux Store
+import store from "./util/store";
+
+// Upon On Demand Loading -> upon render -> suspend loading
+const Offers = lazy(()=> import("./pages/Offers"));
+
 function AppLayout() {
+  const [isSearchPlace, setIsSearchPlace] = useState(false);
   // This is modify the searchText
   const [searchText, setSearchText] = useState({
     restaurant: null,
   });
 
-  const [isSearchPlace, setIsSearchPlace] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState({
+    isActive: false,
+  });
+
+  //   // Get the current route path
+    const currentPath = useLocation().pathname;
+  // console.log(currentPath);
 
   return (
     <Provider store={store}>
+      <ToggleMenuContext.Provider value={{toggleMenu: toggleMenu, setToggleMenu: setToggleMenu}} >
       <div className="app text-medium">
         <SearchContext.Provider
           value={{ searchText: searchText, setSearchText: setSearchText }}
@@ -36,10 +55,11 @@ function AppLayout() {
           <div className={isSearchPlace ? "isSearchLocation" : ""}>
             <Header setIsSearchPlace={setIsSearchPlace} />
             <Outlet />
-            {/* <Footer /> */}
+             {(currentPath === "/" || currentPath === "/offers" || currentPath.startsWith("/collections/") ) &&  <Footer />}
           </div>
         </SearchContext.Provider>
       </div>
+      </ToggleMenuContext.Provider>
     </Provider>
   );
 }
@@ -59,15 +79,7 @@ const AppRouter = createBrowserRouter([
         element: <RestaurantsMenu />,
       },
       {
-        path: "/search/restaurants/:cuisine/:resId",
-        element: <RestaurantsMenu />,
-      },
-      {
-        path: "topRestaurants/:cuisine/:resId",
-        element: <RestaurantsMenu />,
-      },
-      {
-        path: "offers/:cuisine/:resId",
+        path: "/topRestaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
       },
       {
@@ -83,12 +95,20 @@ const AppRouter = createBrowserRouter([
         element: <Search />,
       },
       {
+        path: "/search/restaurants/:cuisine/:resId",
+        element: <RestaurantsMenu />,
+      },
+      {
         path: "/help",
-        element: <Help />,
+        element: <Help />
       },
       {
         path: "/offers",
-        element: <Offers />,
+        element:  <Suspense fallback={<RestaurantsLoadingScreen/>} ><Offers /></Suspense>
+      },
+      {
+        path: "/offers/:cuisine/:resId",
+        element: <RestaurantsMenu />,
       },
 
       {
