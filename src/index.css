@@ -65,7 +65,6 @@
 }
 
 .search_location_slidebar {
-  /* absolute left-0 top-0 z-50 h-full w-[400px] border bg-white  */
   position: fixed;
   left: 0;
   top: 0;

@@ -2,6 +2,7 @@ import { HorizontalRollar } from "./HorizontalRollar";
 import { DATA_IMG_URL } from "../constants/data";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../util/cartSlice";
+import placeholderImage from "../assets/placeholder_food_img.jpg";
 
 export function MenuItem({ menu }) {
   const { name, description, imageId, price } = menu;
@@ -41,7 +42,7 @@ export function MenuItem({ menu }) {
         <div className=" flex flex-col items-center justify-start ">
           <img
             className="h-[100px] w-[100px] sm:w-[80px] sm:h-[80px] rounded-md"
-            src={DATA_IMG_URL + imageId}
+            src={imageId ? DATA_IMG_URL + imageId : placeholderImage}
             alt=""
           />
           <span
