@@ -2,11 +2,11 @@ import { useState } from "react";
 import { SearchSelectedTabRestaurants } from "./SearchSelectedTabRestaurants";
 import { SearchSelectedTabDish } from "./SearchSelectedTabDish";
 
-function SearchCuisineRestaurants() {
+function SearchSelectedTab() {
   const [selectedTab, setSelectedTab] = useState("restaurant");
 
   return (
-    <div className="relative mb-6 mt-6 h-[400px] w-full bg-gray-100">
+    <div className="relative mb-6 mt-6 h-[80vh] w-full bg-gray-100">
       <div className="fixed top-[200px] z-50 -ml-4 -mt-2 flex w-[70%] gap-3 bg-white text-lg text-white  ">
         <div
           onClick={() => setSelectedTab("restaurant")}
@@ -30,15 +30,15 @@ function SearchCuisineRestaurants() {
         </div>
       </div>
 
-      <div className="bg-gray-100  p-5">
+      <div className="bg-gray-100 p-5 overflow-hidden ">
         {selectedTab === "restaurant" ? (
           <SearchSelectedTabRestaurants />
         ) : (
-          <SearchSelectedTabDish />
+          <SearchSelectedTabDish/>
         )}
       </div>
     </div>
   );
 }
 
-export default SearchCuisineRestaurants;
+export default SearchSelectedTab;

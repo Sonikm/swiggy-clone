@@ -9,10 +9,10 @@ export function MenuCards({ list }) {
   const { title } = list?.card?.card;
 
   return (
-    <div className="flex w-full flex-col gap-6 text-zinc-700">
+    <div className="flex w-full flex-col gap-6 xs:gap-4 text-zinc-700">
       <div className="border border-t-[16px] border-gray-100"></div>
       <div className="flex items-center justify-between px-4 ">
-        <h3 className="text-lg font-bold text-zinc-700">
+        <h3 className="text-lg font-bold text-zinc-700 xs:text-sm">
           {title} ({resCardLength})
         </h3>
 

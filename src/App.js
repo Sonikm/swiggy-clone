@@ -1,23 +1,66 @@
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
-import { createBrowserRouter, Outlet } from "react-router-dom";
-import RestaurantsMenu from "./components/RestaurantsMenu";
-import Search from "./components/Search";
-import Offers from "./components/Offers";
-import SignIn from "./components/SignIn";
-import Cart from "./components/Cart";
-import ErrorPage from "./components/ErrorPage";
-import TopRestaurants from "./components/TopRestaurants";
-import FoodCategory from "./components/FoodCategoryItems";
+// React and External Library Imports
+import React, { useState, lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
+
+// Local Component Imports
+import Header from "./pages/Header";
+import Body from "./pages/Body";
+import Footer from "./pages/Footer";
+import RestaurantsMenu from "./pages/RestaurantsMenu";
+import Search from "./pages/Search";
+import Cart from "./pages/Cart";
+import PageNotFound from "./pages/PageNotFound";
+import FoodCollectionItem from "./pages/FoodCollectionItemsPage";
+import SearchLocation from "./components/SearchLocation";
+import Order from "./pages/Order";
+import RestaurantsLoadingScreen from "./shimmerUIs/RestaurantsLoadingScreen";
+import Help from "./pages/Help";
+
+// Context Imports
+import SearchContext from "./contexts/SearchContext";
+import ToggleMenuContext from "./contexts/ToggleMenuContext";
+
+// Redux Store
+import store from "./util/store";
+
+// Upon On Demand Loading -> upon render -> suspend loading
+const Offers = lazy(()=> import("./pages/Offers"));
 
 function AppLayout() {
+  const [isSearchPlace, setIsSearchPlace] = useState(false);
+  // This is modify the searchText
+  const [searchText, setSearchText] = useState({
+    restaurant: null,
+  });
+
+  const [toggleMenu, setToggleMenu] = useState({
+    isActive: false,
+  });
+
+  //   // Get the current route path
+    const currentPath = useLocation().pathname;
+  // console.log(currentPath);
+
   return (
-    <div className="app text-medium">
-      <Header />
-      <Outlet/>
-      {/* <Footer /> */}
-    </div>
+    <Provider store={store}>
+      <ToggleMenuContext.Provider value={{toggleMenu: toggleMenu, setToggleMenu: setToggleMenu}} >
+      <div className="app text-medium">
+        <SearchContext.Provider
+          value={{ searchText: searchText, setSearchText: setSearchText }}
+        >
+          {isSearchPlace && (
+            <SearchLocation setIsSearchPlace={setIsSearchPlace} />
+          )}
+          <div className={isSearchPlace ? "isSearchLocation" : ""}>
+            <Header setIsSearchPlace={setIsSearchPlace} />
+            <Outlet />
+             {(currentPath === "/" || currentPath === "/offers" || currentPath.startsWith("/collections/") ) &&  <Footer />}
+          </div>
+        </SearchContext.Provider>
+      </div>
+      </ToggleMenuContext.Provider>
+    </Provider>
   );
 }
 
@@ -25,49 +68,63 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: "/",
         element: <Body />,
       },
       {
-        path: "/menu/:resId",
+        path: "/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
       },
       {
-        path: "/category/:collectionId/:resId",
+        path: "/topRestaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
       },
       {
-        path: "/menu/:resId",
-        element: <TopRestaurants />,
+        path: "/collections/:cuisine/:collectionId",
+        element: <FoodCollectionItem />,
       },
       {
-        path: "/category/:collectionId",
-        element: <FoodCategory />,
+        path: "/collections/restaurants/:cuisine/:resId",
+        element: <RestaurantsMenu />,
       },
       {
         path: "/search",
         element: <Search />,
       },
       {
+        path: "/search/restaurants/:cuisine/:resId",
+        element: <RestaurantsMenu />,
+      },
+      {
+        path: "/help",
+        element: <Help />
+      },
+      {
         path: "/offers",
-        element: <Offers />,
+        element:  <Suspense fallback={<RestaurantsLoadingScreen/>} ><Offers /></Suspense>
+      },
+      {
+        path: "/offers/:cuisine/:resId",
+        element: <RestaurantsMenu />,
       },
 
       {
-        path: "/signIn",
-        element: <SignIn />,
-      },
-
-      {
-        path: "Cart",
+        path: "/cart",
         element: <Cart />,
+      },
+
+      {
+        path: "/cart/order",
+        element: <Order />,
       },
     ],
   },
-]);
+], {
+  basename: "/swiggy-clone",
+});
 
 export { AppRouter };
 

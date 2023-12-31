@@ -1,14 +1,17 @@
 import { useSearchParams } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "../assets/asset 52.svg";
 import { HorizontalRollar } from "./HorizontalRollar";
+import { useContext } from "react";
+import SearchContext from "../contexts/SearchContext";
 
 
-function RecentSearches({setSearchText}) {
+function RecentSearches() {
   const [, setSearchParams] = useSearchParams();
+  const {setSearchText} = useContext(SearchContext);
 
   function handleSearchCuisines(cuisine){
-    setSearchText(cuisine)
     setSearchParams(`?query=${ encodeURIComponent(cuisine)}`)
+    setSearchText({restaurant: cuisine});
 
   }
 
