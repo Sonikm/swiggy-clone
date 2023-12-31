@@ -122,7 +122,9 @@ const AppRouter = createBrowserRouter([
       },
     ],
   },
-]);
+], {
+  basename: "/swiggy-clone",
+});
 
 export { AppRouter };
 
