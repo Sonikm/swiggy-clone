@@ -12,9 +12,10 @@ function useRestaurantsPlaceId() {
   useEffect(() => {
     async function fetchData() {
       const data = await getData(
-        `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmisc%2Faddress-recommend%3Fplace_id%3D${placeId}`,
+        `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${placeId}`,
       );
       setRestaurantPlaceName(data?.data[0]);
+    //   console.log(data)
     }
 
     fetchData();

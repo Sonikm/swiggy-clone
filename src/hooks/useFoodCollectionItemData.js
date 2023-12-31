@@ -7,7 +7,7 @@ function useFoodCollectionItemData(collectionId) {
   useEffect(() => {
     async function fetchFoodCollectionData() {
       const data = await getData(
-        `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D28.6139391%26lng%3D77.2090212%26collection%3D${collectionId}%26tags%3Dlayout_CCS_CholeBhature%26sortBy%3D%26filters%3D%26type%3Drcv2%26offset%3D0%26page_type%3Dnull`,
+        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6139391&lng=77.2090212&collection=${collectionId}&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null`,
       );
       setFoodCollection(data?.data?.cards);
     }
@@ -19,5 +19,3 @@ function useFoodCollectionItemData(collectionId) {
 }
 
 export default useFoodCollectionItemData;
-
-// https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D28.6139391%26lng%3D77.2090212%26collection%3D${collectionId}%26tags%3Dlayout_CCS_CholeBhature%26sortBy%3D%26filters%3D%26type%3Drcv2%26offset%3D0%26page_type%3Dnull
