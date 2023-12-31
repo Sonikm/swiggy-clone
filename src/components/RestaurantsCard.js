@@ -1,7 +1,7 @@
 import { DATA_IMG_URL } from "../constants/data";
 import vagIcon from "../assets/asset 55.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 function RestaurantCard({ restaurant, width, height, text, header, subHeader }) {
   const {
