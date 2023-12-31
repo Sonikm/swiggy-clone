@@ -55,10 +55,10 @@ export default function PageNav({ setIsSearchPlace }) {
             className="flex   cursor-pointer items-center  justify-between gap-2 whitespace-nowrap text-sm xs:text-xs"
           >
             <span className="text-bold underline decoration-2  underline-offset-5 transition-all hover:text-red-500 hover:decoration-orange-600  md:text-sm xs:text-xs">
-              {(restaurantPlaceName?.address_components[0]?.long_name)?.split(" ")?.splice(0,2)?.join(" ")}
+              {(restaurantPlaceName?.address_components[0]?.long_name)?.split(" ")?.splice(0,2)?.join(" ") || "New Delhi"}
             </span>
             <p className="mr-2 xs:text-xs  text-slate-600 lg:overflow-hidden lg:mr-0  md:text-sm  sm:line-clamp-1">
-             {(restaurantPlaceName?.formatted_address)?.split(" ")?.splice(0,3)?.join(" ")}
+             {(restaurantPlaceName?.formatted_address)?.split(" ")?.splice(0,3)?.join(" ") || "New Delhi"}
             </p>
             <FontAwesomeIcon icon={faChevronDown} className="text-red-500" />
           </button>

@@ -16,7 +16,7 @@ function Order() {
             <p>delicious meal. Track your order online. Enjoy!</p>
             </div>
 
-            <Link to={"/"}>
+            <Link to="/">
             <button className="bg-orange-500 text-white p-3 px-4">Back to Home</button>
             </Link>
            

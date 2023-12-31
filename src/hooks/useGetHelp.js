@@ -7,7 +7,7 @@ const [faqs, setFaqs] = useState(null);
 
    useEffect(()=> {
     async function fetchData(){
-        const data = await getData("https://www.swiggy.com/dapi/support/issues/faq?");
+        const data = await getData("https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fsupport%2Fissues%2Ffaq%3F");
 
         setFaqs(data?.data?.issues?.data);
     }

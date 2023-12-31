@@ -7,7 +7,7 @@ function useSearchAutocompletePlace(searchText) {
   useEffect(() => {
     async function fetchData() {
       const data = await getData(
-        `https://www.swiggy.com/dapi/misc/place-autocomplete?input=${searchText}&types=`,
+        `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmisc%2Fplace-autocomplete%3Finput%3D${searchText}%26types%3D`,
       );
 
       setAutocompletePlace(data?.data);

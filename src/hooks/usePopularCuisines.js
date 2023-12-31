@@ -8,7 +8,7 @@ function usePopularCuisines() {
     async function fetchData() {
       try {
         const data = await getData(
-          "https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=28.6139391&lng=77.2090212",
+          "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Flanding%2FPRE_SEARCH%3Flat%3D28.6139391%26lng%3D77.2090212",
         );
 
         setPopularCuisines(
