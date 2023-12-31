@@ -45,7 +45,7 @@ export default function PageNav({ setIsSearchPlace }) {
         <div className="flex over items-center justify-between gap-10 lg:gap-4 xs:gap-2 ">
           <Link to="/">
             <img
-              className="cursor-pointer transition xs:w-4  duration-200 hover:scale-110  sm:w-6 "
+              className="cursor-pointer transition xs:w-8 p-1  duration-200 hover:scale-110"
               src={logo}
               alt="logo"
             />

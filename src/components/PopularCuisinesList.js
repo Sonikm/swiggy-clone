@@ -39,7 +39,7 @@ function PopularCuisines({ cuisineImg, entityId, setSearchParams }) {
   }
 
   return (
-    <button className="w-16 xs:w-12 cursor-pointer flex-none" onClick={(e) => handleSearchCuisines()}>
+    <button className="w-16 xs:w-14 cursor-pointer flex-none" onClick={(e) => handleSearchCuisines()}>
       <img src={cuisineImg} alt="" />
     </button>
   );
