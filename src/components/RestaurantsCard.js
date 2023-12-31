@@ -42,7 +42,7 @@ function RestaurantCard({ restaurant, width, height, text, header, subHeader }) 
           <img className="xs:w-4" src={vagIcon} alt="" />
           <p className="flex items-center justify-center gap-1 font-bold text-light xs:text-black">
             <span> {avgRating} </span>
-            <span className="">. </span>
+            <span className=" bg-slate-600 w-1 h-1 rounded-full"> </span>
             {/* <FontAwesomeIcon icon={faClock} className="text-orange-5 xs:hidden " /> */}
 
             <span className="xs:text-sm whitespace-nowrap "> {sla?.slaString}</span>

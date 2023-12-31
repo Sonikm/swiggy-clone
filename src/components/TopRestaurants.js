@@ -18,7 +18,7 @@ function TopRestaurants() {
             to={`topRestaurants/${restaurant.info.name}/${restaurant.info.id}`}
             key={restaurant.info.id}
           >
-            <RestaurantCard width={"w-64 xs:w-28 sm:w-36"}   height={"h-44 xs:h-20 sm:h-28"}  text={"xs:text-sm"} header={"xs:text-sm"} subHeader={"xs:text-[10px] xs:light-text"} restaurant={restaurant.info} />
+            <RestaurantCard width={"w-64 xs:w-28 sm:w-36"}   height={"h-44 xs:h-20 sm:h-28"}  text={"xs:text-sm"} header={"xs:text-sm sm:text-sm"} subHeader={"xs:text-[10px] xs:light-text sm:text-lg"} restaurant={restaurant.info} />
           </Link>
         ))}
       </div>
