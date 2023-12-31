@@ -73,52 +73,65 @@ const AppRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
+        basename: "/swiggy-clone",
+        
       },
       {
         path: "/topRestaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/collections/:cuisine/:collectionId",
         element: <FoodCollectionItem />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/collections/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/search",
         element: <Search />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/search/restaurants/:cuisine/:resId",
         element: <RestaurantsMenu />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/help",
-        element: <Help />
+        element: <Help />,
+        basename: "/swiggy-clone",
       },
       {
         path: "/offers",
-        element:  <Suspense fallback={<RestaurantsLoadingScreen/>} ><Offers /></Suspense>
+        element:  <Suspense fallback={<RestaurantsLoadingScreen/>} ><Offers /></Suspense>,
+        basename: "/swiggy-clone",
       },
       {
         path: "/offers/:cuisine/:resId",
         element: <RestaurantsMenu />,
+        basename: "/swiggy-clone",
       },
 
       {
         path: "/cart",
         element: <Cart />,
+        basename: "/swiggy-clone",
       },
 
       {
         path: "/cart/order",
         element: <Order />,
+        basename: "/swiggy-clone",
       },
     ],
   },
