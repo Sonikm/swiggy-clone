@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif']
+    },
     extend: {
       textUnderlineOffset: {
         5: '5px',

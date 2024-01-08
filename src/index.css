@@ -15,16 +15,17 @@
         scrollbar-width: none;  /* Firefox */
     }
   }
-
-}
-
-@layer utilities {
   .btn {
     @apply whitespace-nowrap focus:bg-orange-500 focus:text-white  focus:border-orange-500 border p-2 px-4 rounded-3xl cursor-pointer border-gray-300 items-center flex justify-center gap-2
   }
+  .nav-link {
+    @apply flex cursor-pointer items-center justify-center gap-2 text-slate-600 hover:text-red-500 md:gap-2;
+  }
 }
 
-
+@layer components {
+  
+}
 
 @font-face {
   font-family: myBoldFont;

@@ -47,7 +47,7 @@ export function MenuItem({ menu }) {
           />
           <span
             onClick={() => handleAddToCart(menu)}
-            className=" -mt-6 w-[100px] xs:w-[60px] cursor-pointer rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg"
+            className=" -mt-6 w-[100px] xs:w-[60px] hover:bg-orange-500  transition-colors duration-150  hover:text-white cursor-pointer rounded-md border bg-white p-[6px] px-4 text-center text-sm font-bold text-green-600 shadow-lg"
           >
             ADD
           </span>

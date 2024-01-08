@@ -20,7 +20,7 @@ function Cart() {
       <div className="mx-4 sm:mx-0 sm:ml-4 w-[60%] sm:w-[80%] pt-4 ">
         <div className="flex justify-between ">
           <h2 className="mb-10 sm:mb-0 text-2xl ">My Order</h2>
-          <button className="mb-10  bg-orange-500 text-white p-2 hover:bg-orange-600 " onClick={()=>handleClearCartItems()}>Clear Cart</button>
+          <button className="mb-10  bg-orange-500 text-white p-2 hover:bg-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-500 ring-offset-2" onClick={()=>handleClearCartItems()}>Clear Cart</button>
         </div>
         <div  className="cart-items-scroll  no-scrollbar flex flex-col gap-4">
           {cartItems?.map((menu, index) => (

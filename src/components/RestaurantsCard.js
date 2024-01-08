@@ -17,7 +17,7 @@ function RestaurantCard({ restaurant, width, height, text, header, subHeader }) 
   return (
     <div
       className={
-        width + " mb-6 flex flex-col gap-3 transition-all hover:scale-95"
+        width + " mb-6 flex flex-col gap-3 transition-all duration-200 hover:scale-95"
       }
     >
       <div
