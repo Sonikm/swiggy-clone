@@ -6,14 +6,17 @@ import SearchContext from "../contexts/SearchContext";
 
 
 export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isSearchDetails, setIsSearchDetails] = useState(false);
   const {setSearchText} = useContext(SearchContext);
 
   function handleSearchCuisines(cuisine) {
+    // To get the value from the url
     // const query = searchParams.get("query");
-    setSearchParams({ query: cuisine });
+    // setSearchParams({ query: cuisine });
+    setSearchParams({ restaurant: cuisine });
     setSearchText({restaurant: cuisine})
+    // console.log(searchParams.get("query"))
     setIsSearchDetails(true);
   }
 
@@ -27,7 +30,7 @@ export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
             <AutoSearchCuisine
               cuisine={cuisine}
               key={index}
-              onChange={() => handleSearchCuisines(cuisine.text)}
+              onClick={() => handleSearchCuisines(cuisine.text)}
             />
           ))}
         </div>
@@ -36,12 +39,12 @@ export function AutoSearchCuisinesList({ autoSuggestCuisines }) {
   );
 }
 
-function AutoSearchCuisine({ cuisine, onChange }) {
+function AutoSearchCuisine({ cuisine, onClick }) {
   const { text, tagToDisplay, cloudinaryId } = cuisine;
 
   return (
     <div
-      onClick={onChange}
+      onClick={onClick}
       className="flex cursor-pointer flex-row items-center justify-start gap-4 px-2 py-3 hover:bg-slate-100"
     >
       <img
