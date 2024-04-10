@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+  }
+  .btn {
+    @apply whitespace-nowrap focus:bg-orange-500 focus:text-white  focus:border-orange-500 border p-2 px-4 rounded-3xl cursor-pointer border-gray-300 items-center flex justify-center gap-2
+  }
+  .nav-link {
+    @apply flex cursor-pointer items-center justify-center gap-2 text-slate-600 hover:text-red-500 md:gap-2;
+  }
+}
+
+@layer components {
+  
+}
+
+@font-face {
+  font-family: myBoldFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Bold.ttf);
+}
+
+@font-face {
+  font-family: myMediumFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Medium.ttf);
+}
+
+@font-face {
+  font-family: myLightFont;
+  src: url(./assets/fonts/BasisGrotesqueArabicPro-Light.ttf);
+}
+
+.text-bold {
+  font-family: myBoldFont;
+}
+
+.text-medium {
+  font-family: myMediumFont;
+}
+.text-light {
+  font-family: myLightFont;
+}
+
+.nav-shadow {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+
+.nav-shadow ul li:hover .nav-icon {
+  fill: red;
+}
+
+.gradient-box {
+  background: linear-gradient(to top, rgba(0,0,0,8), rgba(0,0,0,0.3), transparent, transparent);
+}
+
+.search_location_slidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  min-height: 100vh;
+  width: 400px;
+  border: 2px ;
+  background: white;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+.slideIn {
+  animation-name: slideIn;
+
+}
+
+.slideOut {
+  animation-name: slideOut;
+
+} 
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.isSearchLocation {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.isSearchLocation::after {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background: #20274299;
+  z-index: 30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.6s ease-out;
+}
+
+.api_glitch_screen {
+  height: 100vh;
+}
+
+.cart-items-scroll {
+  overflow-y: scroll;
+  height: 66vh;
+}
+
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 33%, #ffffff 100%);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #111827;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg)}
+} 
+
+.slick-slider {
+  height: 200px; /* Adjust the height as needed */
+}
+
+main {
+  width: 70%;
+  height: 500px;
+  margin: auto;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #0a3069;
+  border: 2px solid #0a3069;
+  box-shadow: 2px 2px 10px rgba(0,0,0, 0.3),
+              -2px -2px 15px 5px rgba(0,0,0, 0.3);
+}
+
+.slide {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ border-radius: 10px;
+ transition: 1s linear;
+ /* border-radius: 10px; */
+
+}
+
+.btn {
+  content: "";
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: rgb(224, 215, 215);
+  top: 40%;
+  cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 8px 4px rgba(255, 255, 255, 0.3);
+
+}
+
+.next-btn {
+  right: 10%;
+}
+
+.prev-btn {
+  left: 10%;
+}
+
+.btn i.fa-solid {
+  color: #0a3069;
+  font-size: 35px;
+  margin: 10px;
+}
+
+
+
+
+/* || This is a for previous button style */
+ .nav {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.nav button {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.4);
+  display: inline-block;
+  border-radius: 4px ;
+  padding-inline: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 25px;
+  background-color: rgb(65, 205, 119);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}
+
+.nav button:hover{
+  background-color: aqua;
+} 
+
+.all-res-w {
+  width: 280px;
+  height: 300px;
+}
+
+.top-res-w {
+  width: 280px;
+  height: 300px;
+}
+
+ul.toggle-nav {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 0;
+  flex-direction: column;
+  height: 400px;
+  z-index: 55;
+  width: 100%;
+  padding: 10px;
+  gap: 0;
+  padding-block: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+.slideIn {
+  animation-name: slideIn;
+
+}
+
+
+ul.toggle-nav li {
+ font-size: 18px;
+}
+
+@media screen and (max-width: 640px) {
+  .loader {
+    width: 50px;
+    height: 50px;
+  }
+
+  .loader::after {
+    width: 45px;
+    height: 45px ;
+  }
+
+}
