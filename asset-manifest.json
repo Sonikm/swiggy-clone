@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/swiggy-clone/static/css/main.0095db07.css",
-    "main.js": "/swiggy-clone/static/js/main.b576a90c.js",
-    "static/js/576.c7682ccc.chunk.js": "/swiggy-clone/static/js/576.c7682ccc.chunk.js",
+    "main.css": "/swiggy-clone/static/css/main.f39e6f66.css",
+    "main.js": "/swiggy-clone/static/js/main.84f3018f.js",
+    "static/js/408.0873a5f4.chunk.js": "/swiggy-clone/static/js/408.0873a5f4.chunk.js",
     "static/media/placeholder_food_img.jpg": "/swiggy-clone/static/media/placeholder_food_img.7ab37bf591f10d43d0a1.jpg",
     "static/media/BasisGrotesqueArabicPro-Light.ttf": "/swiggy-clone/static/media/BasisGrotesqueArabicPro-Light.faf4233b1e3042eaba8a.ttf",
     "static/media/BasisGrotesqueArabicPro-Medium.ttf": "/swiggy-clone/static/media/BasisGrotesqueArabicPro-Medium.0cf3fed62f93c2ec5f76.ttf",
@@ -13,22 +13,20 @@
     "static/media/help.svg": "/swiggy-clone/static/media/help.d69d8a93dca36ab846e5af21752a1f38.svg",
     "static/media/asset 47.svg": "/swiggy-clone/static/media/asset 47.6ccc804d614c8b9add21c5c87a817511.svg",
     "static/media/asset 55.svg": "/swiggy-clone/static/media/asset 55.193cf0572addf5ab2e0824846ed36466.svg",
-    "static/media/clear_icon.svg": "/swiggy-clone/static/media/clear_icon.79613691e69dfbf801e993cd5691665e.svg",
-    "static/media/asset 54.svg": "/swiggy-clone/static/media/asset 54.12022bc8eaa2c6704b2c1b1114814e3b.svg",
-    "static/media/asset 53.svg": "/swiggy-clone/static/media/asset 53.2bc9706290c3f0bd4adb6bfaa9184b6f.svg",
-    "static/media/asset 52.svg": "/swiggy-clone/static/media/asset 52.e0d033fb602d8aca4c10114095de20cf.svg",
     "index.html": "/swiggy-clone/index.html",
+    "static/media/clear_icon.svg": "/swiggy-clone/static/media/clear_icon.79613691e69dfbf801e993cd5691665e.svg",
+    "static/media/asset 52.svg": "/swiggy-clone/static/media/asset 52.e0d033fb602d8aca4c10114095de20cf.svg",
     "static/media/item_price.svg": "/swiggy-clone/static/media/item_price.e47b478b1cf888da365fed080fd1eb16.svg",
     "static/media/distance.svg": "/swiggy-clone/static/media/distance.a24166d0aacdce1c494b33392e9b8c76.svg",
     "static/media/hamburger_menu.svg": "/swiggy-clone/static/media/hamburger_menu.317bc50c92894bf177b7fef280dcd505.svg",
     "static/media/open_menu.svg": "/swiggy-clone/static/media/open_menu.c56fab6a392ec5e5a0dc06c10f5efd66.svg",
     "static/media/close_menu.svg": "/swiggy-clone/static/media/close_menu.ed83119676139faa8bf2ee41188a3994.svg",
-    "main.0095db07.css.map": "/swiggy-clone/static/css/main.0095db07.css.map",
-    "main.b576a90c.js.map": "/swiggy-clone/static/js/main.b576a90c.js.map",
-    "576.c7682ccc.chunk.js.map": "/swiggy-clone/static/js/576.c7682ccc.chunk.js.map"
+    "main.f39e6f66.css.map": "/swiggy-clone/static/css/main.f39e6f66.css.map",
+    "main.84f3018f.js.map": "/swiggy-clone/static/js/main.84f3018f.js.map",
+    "408.0873a5f4.chunk.js.map": "/swiggy-clone/static/js/408.0873a5f4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0095db07.css",
-    "static/js/main.b576a90c.js"
+    "static/css/main.f39e6f66.css",
+    "static/js/main.84f3018f.js"
   ]
 }
